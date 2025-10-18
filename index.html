@@ -9,32 +9,158 @@
 <meta name="theme-color" content="#0f1724"/>
 <style>
 :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa7bd;--accent:#2dd4bf;--maxw:980px;}
-*{box-sizing:border-box;}
-html,body{margin:0;overflow-x:hidden;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#071025 0%,#031021 100%);color:#e6eef6;-webkit-font-smoothing:antialiased;}
-header{position:fixed;top:0;left:0;width:100%;background:var(--card);display:flex;align-items:center;gap:12px;padding:10px 20px;z-index:1000;box-shadow:0 2px 12px rgba(0,0,0,0.6);}
-header img{height:36px;}
-header h2{margin:0;font-size:20px;color:var(--accent);}
-.wrap{max-width:var(--maxw);margin:100px auto 28px;padding:20px;}
-.hero{display:flex;gap:20px;align-items:center;}
-.hero .info{flex:1;}
-h1{margin:0 0 8px;font-size:28px;}
-.sub{color:var(--muted);margin-bottom:12px;}
-.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.04);color:var(--accent);font-weight:600;margin-right:8px;}
-.download-btn{background:linear-gradient(90deg,#00c9a7,#00bfa6);border:none;padding:14px 20px;border-radius:12px;font-weight:700;cursor:pointer;color:#032023;font-size:16px;box-shadow:0 6px 22px rgba(0,0,0,0.4);}
-.alt-actions{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;}
-.btn-outline{border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;background:transparent;color:var(--muted);cursor:pointer;}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:14px;margin-top:18px;}
-.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);}
-.screens{display:flex;gap:12px;margin-top:12px;overflow-x:auto;overflow-y:hidden;padding-bottom:6px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;}
-.screens img{height:360px;border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.6);cursor:zoom-in;transition:transform .2s;}
-.screens img:hover{transform:scale(1.03);}
-.grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px;}
+*{box-sizing:border-box}
+html,body{margin:0;overflow-x:hidden;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#071025 0%,#031021 100%);color:#e6eef6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:28px auto;padding:20px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+header img{height:50px;width:50px;border-radius:10px}
+header h1{font-size:24px;margin:0}
+.hero{display:flex;gap:20px;align-items:center}
+.hero .info{flex:1}
+h1{margin:0 0 8px;font-size:28px}
+.sub{color:var(--muted);margin-bottom:12px}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.04);color:var(--accent);font-weight:600;margin-right:8px}
+.download-btn{background:linear-gradient(90deg,#00c9a7,#00bfa6);border:none;padding:14px 20px;border-radius:12px;font-weight:700;cursor:pointer;color:#032023;font-size:16px;box-shadow:0 6px 22px rgba(0,0,0,0.4)}
+.alt-actions{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.btn-outline{border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;background:transparent;color:var(--muted);cursor:pointer}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:14px;margin-top:18px}
+.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted)}
+.screens{display:flex;gap:12px;margin-top:12px;overflow-x:auto;overflow-y:hidden;padding-bottom:6px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.screens img{height:360px;border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.6);cursor:zoom-in;transition:transform .2s}
+.screens img:hover{transform:scale(1.03)}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
 @media (max-width:900px){.hero{flex-direction:column;align-items:flex-start}.grid{grid-template-columns:1fr}.screens img{height:220px}}
-details summary{cursor:pointer;color:var(--muted);padding:8px 0;font-weight:600;}
-.qr{display:flex;gap:12px;align-items:center;}
-.small{font-size:13px;color:var(--muted);}
-footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center;}
-a.link{color:var(--accent);text-decoration:none;}
+details summary{cursor:pointer;color:var(--muted);padding:8px 0;font-weight:600}
+.qr{display:flex;gap:12px;align-items:center}
+.small{font-size:13px;color:var(--muted)}
+footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+a.link{color:var(--accent);text-decoration:none}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(3,10,20,0.88);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out;transition:opacity .25s ease}
+.lightbox.active{display:flex;opacity:1}
+.lightbox img{max-width:90%;max-height:90%;border-radius:16px;box-shadow:0 0 50px rgba(0,0,0,0.8);animation:zoomIn .25s ease}
+@keyframes zoomIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<!-- Header -->
+<header>
+  <img src="favicon.png" alt="Logo">
+  <h1>PlayMod</h1>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="info">
+    <div style="margin-bottom:8px">
+      <span class="badge">APK</span>
+      <span class="badge" style="background:rgba(255,255,255,0.02);color:#ffd166">Phiên bản: <strong id="ver">1.2.2</strong></span>
+    </div>
+    <div class="sub" id="desc">Menu Rời PlayMod Antiban</div>
+
+    <div>
+      <button id="btnDownload" class="download-btn">Tải xuống APK</button>
+      <div class="alt-actions small">
+        <button id="btnMirror" class="btn-outline">Tải dự phòng (Mirror)</button>
+        <a id="manualLink" class="btn-outline link" href="guide.html" target="_blank" rel="noopener noreferrer">Hướng dẫn cài đặt</a>
+      </div>
+    </div>
+
+    <div class="card meta" style="margin-top:14px">
+      <div>Dung lượng: <strong id="size">7.26 MB</strong></div>
+      <div>Yêu cầu: <strong id="minsdk">Android 5.0+</strong></div>
+      <div>MD5: <strong id="md5">—</strong></div>
+    </div>
+  </div>
+
+  <div style="width:300px">
+    <div class="card" style="text-align:center">
+      <div style="font-size:13px;color:var(--muted)">Quét để tải</div>
+      <div class="qr" style="justify-content:center;margin-top:10px">
+        <img id="qrimg" src="" alt="QR" width="160" height="160" style="border-radius:8px;background:#021020;padding:6px"/>
+      </div>
+      <div class="small" style="margin-top:10px">Hoặc mở trên điện thoại Android và ấn nút Tải xuống</div>
+    </div>
+  </div>
+</div>
+
+<!-- Grid -->
+<div class="grid">
+  <div>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:8px">Ảnh chụp màn hình</div>
+      <div class="screens" id="screens"></div>
+    </div>
+
+    <div class="card">
+      <details open>
+        <summary>Changelog</summary>
+        <div style="padding-top:8px" id="changelog">
+          <strong>v1.2.2</strong> — Phát hành bản PlayMod Antiban.
+          <br><strong>v1.2.0</strong> — Cập nhật menu, sửa lỗi nhỏ.
+        </div>
+      </details>
+
+      <details>
+        <summary>FAQ — Câu hỏi thường gặp</summary>
+        <div style="padding-top:8px">
+          <p><strong>Q:</strong> Làm sao để cài nếu báo "Nguồn không xác định"?</p>
+          <p class="small">A: Vào Cài đặt → Bảo mật hoặc Ứng dụng → Cho phép cài ứng dụng từ nguồn không xác định, hoặc bật cho trình duyệt dùng để tải file.</p>
+          <p><strong>Q:</strong> Ứng dụng có an toàn?</p>
+          <p class="small">A: Tốt nhất ký APK bằng khoá bạn tin tưởng; kiểm tra MD5/SHA nếu cần.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <aside>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:8px">Thông tin tải</div>
+      <div class="small">Tải trực tiếp từ máy chủ: <code id="apkFile">https://example.com/playmod.apk</code></div>
+      <div style="margin-top:10px">
+        <button id="btnSize" class="btn-outline">Kiểm tra kích thước & MD5</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:8px">Tải nhanh</div>
+      <div class="small" style="margin-bottom:8px">Link Mirror:</div>
+      <a id="mirrorLink" class="link" href="https://example.com/playmod.apk">https://example.com/playmod.apk</a>
+    </div>
+  </aside>
+</div>
+
+<!-- Footer -->
+<footer>
+  © <span id="year"></span> PlayMod — Trang tải APK. 
+  <br><a href="terms.html" class="link">Điều khoản sử dụng</a> • <a href="guide.html" class="link">Hướng dẫn cài đặt</a>
+</footer>
+
+<!-- Adsterra dưới cùng -->
+<div id="adsterra-container" style="text-align:center; margin-top:20px;">
+  <script async="async" data-cfasync="false" src="//pl27872516.effectivegatecpm.com/d34adaf876ed6904a19b28d3dd529d91/invoke.js"></script>
+  <div id="container-d34adaf876ed6904a19b28d3dd529d91"></div>
+</div>
+
+<!-- SocialBar -->
+<script type="text/javascript" src="//pl27872625.effectivegatecpm.com/34/b4/e9/34b4e98a66faacea3fe7b0953bf1a52b.js"></script>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightbox-img" src="" alt="Screenshot">
+</div>
+
+<script>
+const CONFIG = {
+  APP_TITLE: "PlayMod",
+  DESCRIPTION: "Menu Rời PlayMod Antiban",
+  APK_URL: "https://example.com/playmod.apk",
+  MIRROR_URL: "https://example.com/playmod.apk",
+  VERSION: "1.2.2",a.link{color:var(--accent);text-decoration:none;}
 .ad-banner{margin:20px 0;text-align:center;}
 /* Lightbox */
 .lightbox{position:fixed;inset:0;background:rgba(3,10,20,0.88);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out;transition:opacity .25s ease;}
