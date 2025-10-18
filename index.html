@@ -14,25 +14,25 @@ html,body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linea
 .wrap{max-width:var(--maxw);margin:0 auto;padding:20px;}
 header{display:flex;align-items:center;gap:12px;background:var(--card);padding:12px 20px;position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.05);}
 header img{height:50px;width:50px;border-radius:10px;}
-header h1{font-size:24px;margin:0;color:#e6eef6;}
+header h1{font-size:24px;margin:0;color:#e6eef6;flex:1;text-align:center;}
 .hero{display:flex;gap:20px;align-items:center;margin-top:20px;}
 .hero .info{flex:1}
 h1{margin:0 0 8px;font-size:28px}
-.sub{color:var(--muted);margin-bottom:12px}
+.sub{color:var(--muted);margin-bottom:12px;text-align:center}
 .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.04);color:var(--accent);font-weight:600;margin-right:8px}
 .download-btn{display:inline-block;text-align:center;background:linear-gradient(90deg,#00c9a7,#00bfa6);padding:14px 20px;border-radius:12px;font-weight:700;color:#032023;font-size:16px;text-decoration:none;box-shadow:0 6px 22px rgba(0,0,0,0.4)}
-.alt-actions{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.alt-actions{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .btn-outline{display:inline-block;text-decoration:none;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;color:var(--muted);text-align:center}
 .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:14px;margin-top:18px}
-.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted)}
-.screens{display:flex;gap:12px;margin-top:12px;overflow-x:auto;overflow-y:hidden;padding-bottom:6px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);justify-content:center}
+.screens{display:flex;gap:12px;margin-top:12px;overflow-x:auto;overflow-y:hidden;padding-bottom:6px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;justify-content:center}
 .screens img{height:360px;border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.6);cursor:zoom-in;transition:transform .2s}
 .screens img:hover{transform:scale(1.03)}
 .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
 @media (max-width:900px){.hero{flex-direction:column;align-items:flex-start}.grid{grid-template-columns:1fr}.screens img{height:220px}}
 details summary{cursor:pointer;color:var(--muted);padding:8px 0;font-weight:600}
-.qr{display:flex;gap:12px;align-items:center}
-.small{font-size:13px;color:var(--muted)}
+.qr{display:flex;gap:12px;align-items:center;justify-content:center}
+.small{font-size:13px;color:var(--muted);text-align:center}
 footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 a.link{color:var(--accent);text-decoration:none}
 .lightbox{position:fixed;inset:0;background:rgba(3,10,20,0.88);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out;transition:opacity .25s ease}
@@ -52,41 +52,38 @@ a.link{color:var(--accent);text-decoration:none}
 
 <div class="hero">
   <div class="info">
-    <div style="margin-bottom:8px">
+    <div style="margin-bottom:8px;text-align:center">
       <span class="badge">APK</span>
       <span class="badge" style="background:rgba(255,255,255,0.02);color:#ffd166">Phiên bản: <strong>1.2.2</strong></span>
     </div>
     <div class="sub">Menu Rời PlayMod Antiban</div>
 
-    <div>
-      <!-- Nút tải chính -->
-      <a href="https://example.com/playmod.apk" class="download-btn" download>
-        Tải xuống APK
-      </a>
-
+    <div style="text-align:center;margin-top:12px">
+      <a href="https://myserver.com/playmod_v1.2.2.apk" class="download-btn" download>Tải xuống APK</a>
       <div class="alt-actions small">
-        <!-- Nút tải dự phòng (Mirror) -->
-        <a href="https://example.com/playmod-mirror.apk" class="btn-outline" download>
-          Tải dự phòng (Mirror)
-        </a>
-        <a href="guide.html" class="btn-outline link" target="_blank" rel="noopener noreferrer">
-          Hướng dẫn cài đặt
-        </a>
+        <a href="https://mirror.com/playmod_v1.2.2.apk" class="btn-outline" download>Tải dự phòng (Mirror)</a>
+        <a href="https://myserver.com/guide.html" class="btn-outline link" target="_blank" rel="noopener noreferrer">Hướng dẫn cài đặt</a>
       </div>
     </div>
 
-    <div class="card meta" style="margin-top:14px">
+    <div class="card meta">
       <div>Dung lượng: <strong>7.26 MB</strong></div>
       <div>Yêu cầu: <strong>Android 5.0+</strong></div>
       <div>MD5: <strong>—</strong></div>
     </div>
+
+    <!-- Adsterra Banner -->
+    <div style="text-align:center; margin-top:20px;">
+      <script async data-cfasync="false" src="//pl27872516.effectivegatecpm.com/d34adaf876ed6904a19b28d3dd529d91/invoke.js"></script>
+      <div id="container-d34adaf876ed6904a19b28d3dd529d91"></div>
+    </div>
   </div>
 
-  <div style="width:300px">
+  <div style="width:300px;margin:auto">
     <div class="card" style="text-align:center">
       <div style="font-size:13px;color:var(--muted)">Quét để tải</div>
-      <div class="qr" style="justify-content:center;margin-top:10px">
-        <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://example.com/playmod.apk" alt="QR" width="160" height="160" style="border-radius:8px;background:#021020;padding:6px"/>
+      <div class="qr">
+        <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://myserver.com/playmod_v1.2.2.apk" alt="QR" width="160" height="160" style="border-radius:8px;background:#021020;padding:6px"/>
       </div>
       <div class="small" style="margin-top:10px">Hoặc mở trên điện thoại Android và ấn nút Tải xuống</div>
     </div>
@@ -96,18 +93,18 @@ a.link{color:var(--accent);text-decoration:none}
 <div class="grid">
   <div>
     <div class="card">
-      <div style="font-weight:700;margin-bottom:8px">Ảnh chụp màn hình</div>
+      <div style="font-weight:700;margin-bottom:8px;text-align:center">Ảnh chụp màn hình</div>
       <div class="screens">
-        <img src="screenshot1.jpg" alt="screenshot">
-        <img src="screenshot2.jpg" alt="screenshot">
-        <img src="screenshot3.jpg" alt="screenshot">
+        <img src="screenshot1.jpg" alt="screenshot" onclick="document.getElementById('lightbox').classList.add('active');document.getElementById('lightbox-img').src=this.src;">
+        <img src="screenshot2.jpg" alt="screenshot" onclick="document.getElementById('lightbox').classList.add('active');document.getElementById('lightbox-img').src=this.src;">
+        <img src="screenshot3.jpg" alt="screenshot" onclick="document.getElementById('lightbox').classList.add('active');document.getElementById('lightbox-img').src=this.src;">
       </div>
     </div>
 
     <div class="card">
       <details open>
         <summary>Changelog</summary>
-        <div style="padding-top:8px">
+        <div style="padding-top:8px;text-align:center">
           <strong>v1.2.2</strong> — Phát hành bản PlayMod Antiban.
           <br><strong>v1.2.0</strong> — Cập nhật menu, sửa lỗi nhỏ.
         </div>
@@ -117,7 +114,7 @@ a.link{color:var(--accent);text-decoration:none}
         <summary>FAQ — Câu hỏi thường gặp</summary>
         <div style="padding-top:8px">
           <p><strong>Q:</strong> Làm sao để cài nếu báo "Nguồn không xác định"?</p>
-          <p class="small">A: Vào Cài đặt → Bảo mật hoặc Ứng dụng → Cho phép cài ứng dụng từ nguồn không xác định, hoặc bật cho trình duyệt dùng để tải file.</p>
+          <p class="small">A: Vào Cài đặt → Bảo mật hoặc Ứng dụng → Cho phép cài ứng dụng từ nguồn không xác định.</p>
           <p><strong>Q:</strong> Ứng dụng có an toàn?</p>
           <p class="small">A: Tốt nhất ký APK bằng khoá bạn tin tưởng; kiểm tra MD5/SHA nếu cần.</p>
         </div>
@@ -127,26 +124,34 @@ a.link{color:var(--accent);text-decoration:none}
 
   <aside>
     <div class="card">
-      <div style="font-weight:700;margin-bottom:8px">Thông tin tải</div>
-      <div class="small">Tải trực tiếp từ máy chủ: <code>https://example.com/playmod.apk</code></div>
+      <div style="font-weight:700;margin-bottom:8px;text-align:center">Thông tin tải</div>
+      <div class="small" style="text-align:center">Tải trực tiếp từ máy chủ: <code>https://myserver.com/playmod_v1.2.2.apk</code></div>
     </div>
 
     <div class="card">
-      <div style="font-weight:700;margin-bottom:8px">Tải nhanh</div>
-      <div class="small" style="margin-bottom:8px">Link Mirror:</div>
-      <a href="https://example.com/playmod-mirror.apk" class="link">https://example.com/playmod-mirror.apk</a>
+      <div style="font-weight:700;margin-bottom:8px;text-align:center">Tải nhanh</div>
+      <div class="small" style="margin-bottom:8px;text-align:center">Link Mirror:</div>
+      <a href="https://mirror.com/playmod_v1.2.2.apk" class="link" style="display:block;text-align:center">https://mirror.com/playmod_v1.2.2.apk</a>
     </div>
   </aside>
 </div>
 
 <footer>
   © <span id="year"></span> PlayMod — Trang tải APK. 
-  <br><a href="terms.html" class="link">Điều khoản sử dụng</a> • <a href="guide.html" class="link">Hướng dẫn cài đặt</a>
+  <br><a href="https://myserver.com/terms.html" class="link">Điều khoản sử dụng</a> • <a href="https://myserver.com/guide.html" class="link">Hướng dẫn cài đặt</a>
 </footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightbox-img" src="" alt="Screenshot">
+</div>
+
+<!-- Popunder Adsterra -->
+<script type="text/javascript" src="//pl27872902.effectivegatecpm.com/16/be/2a/16be2abfa2a9b556c0f50ab12d4f75db.js"></script>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>
-  </html>
+                         </html>
