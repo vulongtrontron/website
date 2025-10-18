@@ -12,7 +12,6 @@
 *{box-sizing:border-box}
 html,body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#071025 0%,#031021 100%);color:#e6eef6;-webkit-font-smoothing:antialiased;}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:20px;}
-/* Sticky header */
 header{display:flex;align-items:center;gap:12px;background:var(--card);padding:12px 20px;position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.05);}
 header img{height:50px;width:50px;border-radius:10px;}
 header h1{font-size:24px;margin:0;color:#e6eef6;}
@@ -36,8 +35,6 @@ details summary{cursor:pointer;color:var(--muted);padding:8px 0;font-weight:600}
 .small{font-size:13px;color:var(--muted)}
 footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 a.link{color:var(--accent);text-decoration:none}
-
-/* Lightbox */
 .lightbox{position:fixed;inset:0;background:rgba(3,10,20,0.88);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out;transition:opacity .25s ease}
 .lightbox.active{display:flex;opacity:1}
 .lightbox img{max-width:90%;max-height:90%;border-radius:16px;box-shadow:0 0 50px rgba(0,0,0,0.8);animation:zoomIn .25s ease}
@@ -48,13 +45,11 @@ a.link{color:var(--accent);text-decoration:none}
 
 <div class="wrap">
 
-<!-- Header cố định -->
 <header>
   <img src="favicon.png" alt="Logo">
-  <h1>PlayMod</h1>
+  <h1 id="title">PlayMod</h1>
 </header>
 
-<!-- Hero -->
 <div class="hero">
   <div class="info">
     <div style="margin-bottom:8px">
@@ -89,7 +84,6 @@ a.link{color:var(--accent);text-decoration:none}
   </div>
 </div>
 
-<!-- Grid -->
 <div class="grid">
   <div>
     <div class="card">
@@ -135,25 +129,27 @@ a.link{color:var(--accent);text-decoration:none}
   </aside>
 </div>
 
-<!-- Footer -->
 <footer>
   © <span id="year"></span> PlayMod — Trang tải APK. 
   <br><a href="terms.html" class="link">Điều khoản sử dụng</a> • <a href="guide.html" class="link">Hướng dẫn cài đặt</a>
 </footer>
 
-<!-- Adsterra -->
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightbox-img" src="" alt="Screenshot">
+</div>
+
+<!-- Adsterra quảng cáo cuối trang -->
 <div id="adsterra-container" style="text-align:center; margin-top:20px;">
-  <script async="async" data-cfasync="false" src="//pl27872516.effectivegatecpm.com/d34adaf876ed6904a19b28d3dd529d91/invoke.js"></script>
+  <script async data-cfasync="false" src="//pl27872516.effectivegatecpm.com/d34adaf876ed6904a19b28d3dd529d91/invoke.js"></script>
   <div id="container-d34adaf876ed6904a19b28d3dd529d91"></div>
 </div>
 
 <!-- SocialBar -->
 <script type="text/javascript" src="//pl27872625.effectivegatecpm.com/34/b4/e9/34b4e98a66faacea3fe7b0953bf1a52b.js"></script>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
-  <img id="lightbox-img" src="" alt="Screenshot">
-</div>
+<!-- Popunder Adsterra -->
+<script type="text/javascript" src="//pl27872902.effectivegatecpm.com/16/be/2a/16be2abfa2a9b556c0f50ab12d4f75db.js"></script>
 
 <script>
 const CONFIG = {
@@ -161,55 +157,4 @@ const CONFIG = {
   DESCRIPTION: "Menu Rời PlayMod Antiban",
   APK_URL: "https://example.com/playmod.apk",
   MIRROR_URL: "https://example.com/playmod.apk",
-  VERSION: "1.2.2",
-  SIZE: "7.26 MB",
-  MD5: "",
-  MIN_SDK: "Android 5.0+",
-  SCREENSHOTS: ["screenshot1.jpg","screenshot2.jpg","screenshot3.jpg"],
-  MANUAL_URL: "guide.html"
-};
-
-document.getElementById('title').textContent = CONFIG.APP_TITLE;
-document.getElementById('desc').textContent = CONFIG.DESCRIPTION;
-document.getElementById('ver').textContent = CONFIG.VERSION;
-document.getElementById('size').textContent = CONFIG.SIZE;
-document.getElementById('md5').textContent = CONFIG.MD5 || '—';
-document.getElementById('minsdk').textContent = CONFIG.MIN_SDK;
-document.getElementById('apkFile').textContent = CONFIG.APK_URL;
-document.getElementById('mirrorLink').href = CONFIG.MIRROR_URL;
-document.getElementById('mirrorLink').textContent = CONFIG.MIRROR_URL;
-document.getElementById('manualLink').href = CONFIG.MANUAL_URL;
-document.getElementById('year').textContent = new Date().getFullYear();
-
-const screens = document.getElementById('screens');
-screens.innerHTML = "";
-CONFIG.SCREENSHOTS.forEach(src => {
-  const img = document.createElement('img');
-  img.src = src;
-  img.alt = "screenshot";
-  img.addEventListener('click', () => {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = src;
-    lightbox.classList.add('active');
-  });
-  screens.appendChild(img);
-});
-
-const qr = document.getElementById('qrimg');
-qr.src = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=" + encodeURIComponent(CONFIG.APK_URL);
-
-document.getElementById('btnDownload').addEventListener('click',()=>{window.location.href=CONFIG.APK_URL;});
-document.getElementById('btnMirror').addEventListener('click',()=>{window.location.href=CONFIG.MIRROR_URL;});
-document.getElementById('btnSize').addEventListener('click',async()=>{
-  try{
-    const res=await fetch(CONFIG.APK_URL,{method:'HEAD'});
-    const size=res.headers.get('content-length');
-    const type=res.headers.get('content-type');
-    alert("Content-Type: "+(type||"—")+"\nSize (bytes): "+(size||"—")+"\n(Phục vụ CORS để đọc header)");
-  }catch(e){alert("Không thể kiểm tra (CORS hoặc server không hỗ trợ HEAD).\n"+e);}
-});
-</script>
-
-</body>
-      </html>
+  VERSION: "
