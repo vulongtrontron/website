@@ -67,6 +67,10 @@ a.link{color:var(--accent);text-decoration:none;}
 .lightbox img{max-width:90%;max-height:90%;border-radius:16px;box-shadow:0 0 50px rgba(0,0,0,0.8);animation:zoomIn .25s ease;}
 @keyframes zoomIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
 </style>
+
+<!-- 🔸 JuicyAds site verification -->
+<meta name="juicyads-site-verification" content="707144b9eacb00df424240afd9a7a159">
+
 </head>
 <body>
 
@@ -171,10 +175,17 @@ a.link{color:var(--accent);text-decoration:none;}
 </div>
 
 <!-- SocialBar -->
-<script type="text/javascript" src="//pl27872625.effectivegatecpm.com/34/b4/e9/34b4e98a66faacea3fe7b0953bf1a52b.js"></script>
+<script async type="text/javascript" src="//pl27872625.effectivegatecpm.com/34/b4/e9/34b4e98a66faacea3fe7b0953bf1a52b.js"></script>
 
-<!-- Popunder Adsterra -->
-<script type='text/javascript' src='//pl27872902.effectivegatecpm.com/16/be/2a/16be2abfa2a9b556c0f50ab12d4f75db.js'></script>
+<!-- Popunder (chỉ hiển thị 1 lần) -->
+<script>
+if (!localStorage.getItem("popShown")) {
+  var pop = document.createElement("script");
+  pop.src = "//pl27872902.effectivegatecpm.com/16/be/2a/16be2abfa2a9b556c0f50ab12d4f75db.js";
+  document.body.appendChild(pop);
+  localStorage.setItem("popShown", "1");
+}
+</script>
 
 <script>
   // Năm hiện tại
@@ -187,9 +198,9 @@ a.link{color:var(--accent);text-decoration:none;}
   document.getElementById("btnDownload").addEventListener("click",()=>window.location.href=mainLink);
   document.getElementById("btnMirror").addEventListener("click",()=>window.location.href=mirrorLink);
 
-  // QR code (nếu muốn tự sinh, gắn src trực tiếp)
+  // QR code
   document.getElementById("qrimg").src = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data="+encodeURIComponent(mainLink);
 </script>
 
 </body>
-	</html>
+</html>
